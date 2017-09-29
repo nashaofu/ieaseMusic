@@ -1,0 +1,25 @@
+language: node_js
+node_js:
+  - "node"
+
+dist: trusty
+sudo: required
+
+cache:
+  directories:
+    - node_modules
+
+install:
+  - npm install
+
+before_script:
+    - git submodule init
+    - git submodule update
+
+script:
+  - npm run package-linux
+  - npm run package-win
+
+branches:
+  only:
+    - master
